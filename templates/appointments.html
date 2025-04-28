@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments</title>
+</head>
+<body>
+    <h1>Appointments</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Patient Name</th>
+                <th>Email</th>
+                <th>Doctor</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appointment in appointments %}
+            <tr>
+                <td>{{ appointment[0] }}</td>
+                <td>{{ appointment[1] }}</td>
+                <td>{{ appointment[2] }}</td>
+                <td>{{ appointment[3] }}</td>
+                <td>{{ appointment[4] }}</td>
+                <td>{{ appointment[5] }}</td>
+                <td>
+                    <a href="{{ url_for('edit', id=appointment[0]) }}">Edit</a> |
+                    <a href="{{ url_for('delete', id=appointment[0]) }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <a href="{{ url_for('index') }}">Book New Appointment</a>
+</body>
+</html>
